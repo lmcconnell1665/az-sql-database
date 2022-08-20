@@ -1,0 +1,23 @@
+name: build vs solution
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: '4.7.x'
+    - name: Restore dependencies
+      run: dotnet restore az-solution.sln
+    - name: Build
+      run: dotnet build az-solution.sln --no-restore
