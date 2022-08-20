@@ -20,4 +20,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore az-solution.sln
     - name: Build
-      run: dotnet build  az-solution.sln --no-restore
+      run: dotnet build az-solution.sln --no-restore
